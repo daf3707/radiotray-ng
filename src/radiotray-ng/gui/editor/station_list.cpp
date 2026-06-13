@@ -51,15 +51,15 @@ END_EVENT_TABLE()
 
 namespace
 {
-	const wxString NAME_COLUMN_TEXT(wxT("Name"));
+	const wxString NAME_COLUMN_TEXT(wxT("名称"));
 	const long NAME_COLUMN_INDEX = 0;
 	const int NAME_COLUMN_WIDTH = 160;
 
-	const wxString URL_COLUMN_TEXT(wxT("URL"));
+	const wxString URL_COLUMN_TEXT(wxT("链接"));
 	const long URL_COLUMN_INDEX = 1;
 	const int URL_COLUMN_WIDTH = 340;
 
-	const wxString NOTIFICATION_COLUMN_TEXT(wxT("Notify"));
+	const wxString NOTIFICATION_COLUMN_TEXT(wxT("通知"));
 	const long NOTIFICATION_COLUMN_INDEX = 2;
 	const int NOTIFICATION_COLUMN_WIDTH = 60;
 
@@ -184,8 +184,8 @@ StationList::loadStations(size_t index, const std::string& station_to_select)
 {
 	if (this->editor_bookmarks.get() == nullptr)
 	{
-		wxString msg = "Bookmarks is not set, cannot load stations!";
-		wxMessageBox(msg, _("Error"));
+		wxString msg = "书签未设置，无法加载电台！";
+		wxMessageBox(msg, _("错误"));
 		return;
 	}
 
@@ -195,8 +195,8 @@ StationList::loadStations(size_t index, const std::string& station_to_select)
 	IBookmarks::group_data_t group = (*this->editor_bookmarks->getBookmarks().get())[this->group_index];
 	if (this->editor_bookmarks->getBookmarks()->get_group_stations(group.group, this->stations) == false)
 	{
-		wxString msg = "Failed to retrieve the stations, aborting load";
-		wxMessageBox(msg, _("Error"));
+		wxString msg = "无法检索站点，中止加载";
+		wxMessageBox(msg, _("错误"));
 		return;
 	}
 
@@ -254,7 +254,7 @@ StationList::addStation()
 	IBookmarks::group_data_t group = (*this->editor_bookmarks->getBookmarks().get())[this->group_index];
 	if (this->editor_bookmarks->getBookmarks()->add_station(group.group, name, url, image, notifications) == false)
 	{
-		wxMessageBox(wxT("Failed to add the station."), wxT("Error"));
+		wxMessageBox(wxT("添加站点失败。"), wxT("错误"));
 		return false;
 	}
 	this->editor_bookmarks->setDirty();
@@ -273,8 +273,8 @@ StationList::addStation()
 	int station_index = this->stations.size() - 1;
 	if (name.compare(this->stations[station_index].name) != 0)
 	{
-		std::string msg = "Invalid index - " + name + " != " + this->stations[station_index].name + " (" + std::to_string(station_index);
-		wxMessageBox(msg, wxT("Error"));
+		std::string msg = "无效索引 - " + name + " != " + this->stations[station_index].name + " (" + std::to_string(station_index);
+		wxMessageBox(msg, wxT("错误"));
 	}
 
 	int image_index = this->station_images.addImage(image, this->blank_image_index);
@@ -495,8 +495,8 @@ StationList::pasteStation()
 	int station_index = this->stations.size() - 1;
 	if (station_name.compare(this->stations[station_index].name) != 0)
 	{
-		std::string msg = "Invalid index - " + station_name + " != " + this->stations[station_index].name + " (" + std::to_string(station_index);
-		wxMessageBox(msg, wxT("Error"));
+		std::string msg = "索引无效 - " + station_name + " != " + this->stations[station_index].name + " (" + std::to_string(station_index);
+		wxMessageBox(msg, wxT("错误"));
 	}
 
 	int image_index = this->station_images.addImage(station_data.image, this->blank_image_index);
@@ -525,14 +525,14 @@ StationList::deleteStation()
 	if (data)
 	{
 		wxString tmpstr(this->stations[data->getStationIndex()].name.c_str(), wxConvUTF8);
-		wxString msg("Delete \"" + tmpstr + "\"\nAre you sure?");
-		int status = wxMessageBox(wxString(msg), wxT("Confirm"), wxYES_NO);
+		wxString msg("删除 \"" + tmpstr + "\"\n你确定吗?");
+		int status = wxMessageBox(wxString(msg), wxT("确认"), wxYES_NO);
 		if (status == wxYES)
 		{
 			IBookmarks::group_data_t group = (*this->editor_bookmarks->getBookmarks().get())[this->group_index];
 			if (this->editor_bookmarks->getBookmarks()->remove_station(group.group, this->stations[data->getStationIndex()].name) == false)
 			{
-				wxMessageBox(wxT("Failed to remove the station, reload the bookmarks."), wxT("Warning"));
+				wxMessageBox(wxT("移除电台失败，请重新加载书签。"), wxT("警告"));
 				return false;
 			}
 
@@ -561,7 +561,7 @@ StationList::onBeginDrag(wxListEvent& event)
 	std::string text;
 	if (StationDragAndDrop::buildText(group.group, this->stations[data->getStationIndex()].name, item_id, text) == false)
 	{
-		wxMessageBox(wxT("Failed to build text object"), wxT("Error"));
+		wxMessageBox(wxT("构建文本对象失败"), wxT("错误"));
 		event.Veto();
 		return;
 	}
@@ -688,7 +688,7 @@ StationList::onItemRightClick(wxListEvent& event)
 
 	if (this->editor_bookmarks.get())
 	{
-		menu.Append(EditorFrame::idMenuAddStation, wxT("&Add"));
+		menu.Append(EditorFrame::idMenuAddStation, wxT("添加 (&A)"));
 
 		bool paste_available = this->isClipboardDataAvailable();
 
@@ -697,27 +697,27 @@ StationList::onItemRightClick(wxListEvent& event)
 		{
 			menu.SetTitle(this->GetItemText(item, NAME_COLUMN_INDEX));
 
-			menu.Append(EditorFrame::idMenuEditStation, wxT("&Edit"));
-			menu.Append(EditorFrame::idMenuCopyStation, wxT("&Copy"));
-			menu.Append(EditorFrame::idMenuCutStation, wxT("Cu&t"));
+			menu.Append(EditorFrame::idMenuEditStation, wxT("编辑 (&E)"));
+			menu.Append(EditorFrame::idMenuCopyStation, wxT("复制 (&C)"));
+			menu.Append(EditorFrame::idMenuCutStation, wxT("剪切 (&T)"));
 			if (paste_available)
 			{
-				menu.Append(EditorFrame::idMenuPasteStation, wxT("&Paste"));
+				menu.Append(EditorFrame::idMenuPasteStation, wxT("粘贴 (&P)"));
 			}
-			menu.Append(EditorFrame::idMenuDeleteStation, wxT("&Delete"));
+			menu.Append(EditorFrame::idMenuDeleteStation, wxT("删除 (&D)"));
 		}
 		else
 		{
 			if (paste_available)
 			{
-				menu.Append(EditorFrame::idMenuPasteStation, wxT("&Paste"));
+				menu.Append(EditorFrame::idMenuPasteStation, wxT("粘贴 (&P)"));
 			}
 		}
 
 		menu.AppendSeparator();
 	}
 
-	menu.Append(EditorFrame::idMenuAbout, wxT("About"));
+	menu.Append(EditorFrame::idMenuAbout, wxT("关于"));
 
 	this->PopupMenu(&menu);
 }
@@ -725,6 +725,6 @@ StationList::onItemRightClick(wxListEvent& event)
 void
 StationList::setNotify(long item_id, bool checked)
 {
-	wxString text((checked ? wxT("Yes") : wxT("No")));
+	wxString text((checked ? wxT("是") : wxT("否")));
 	this->SetItem(item_id, NOTIFICATION_COLUMN_INDEX, text);
 }

@@ -1,180 +1,242 @@
 [
-   {
-      "group" : "Jazz",
-      "stations" : [
-         {
-            "name" : "Smooth Jazz",
-            "url" : "http://smoothjazz.com/streams/smoothjazz_128.pls"
-         },
-         {
-            "name" : "Sonic Universe",
-            "url" : "http://somafm.com/sonicuniverse.pls"
-         }
-      ]
-   },
-   {
-      "group" : "Latin",
-      "stations" : [
-         {
-            "name" : "Top Latino Radio",
-            "url" : "http://online.radiodifusion.net:8020/listen.pls"
-         }
-      ]
-   },
-   {
-      "group" : "Classic Rock",
-      "stations" : [
-         {
-            "name" : "181.FM Classic Hits",
-            "url" : "http://www.181.fm/winamp.pls?station=181-greatoldies&file=181-greatoldies.pls"
-         },
-         {
-            "name" : "Covers",
-            "url" : "http://somafm.com/covers.pls"
-         }
-      ]
-   },
-   {
-      "group" : "Classical",
-      "stations" : [
-         {
-            "name" : "KDFC",
-            "url" : "http://provisioning.streamtheworld.com/pls/KDFCFM.pls"
-         },
-         {
-            "name" : "WCPE",
-            "url" : "http://www.ibiblio.org/wcpe/wcpe.pls"
-         },
-         {
-            "name" : "CINEMIX",
-            "url" : "http://cinemix.us/cine.asx"
-         },
-         {
-            "name" : "WQXR",
-            "url" : "http://www.wqxr.org/stream/wqxr/mp3.pls"
-         }
-      ]
-   },
-   {
-      "group" : "Pop / Rock",
-      "stations" : [
-         {
-            "name" : "Radio Paradise",
-            "url" : "http://www.radioparadise.com/musiclinks/rp_128.m3u"
-         },
-         {
-            "name" : "SoftRockRadio.net",
-            "url" : "https://gold.streamguys1.com/softrock.mp3"
-         },
-         {
-            "name" : "Indie Pop Rocks!",
-            "url" : "http://somafm.com/indiepop.pls"
-         },
-         {
-            "name" : "PopTron",
-            "url" : "http://somafm.com/poptron.pls"
-         }
-      ]
-   },
-   {
-      "group" : "Oldies",
-      "stations" : [
-         {
-            "name" : "ABN Antioch OTR",
-            "url" : "http://radio.macinmind.com/listen.m3u"
-         },
-         {
-            "name" : "AM600 Conyers OTR",
-            "url" : "http://www.conyersradio.net/listen.m3u"
-         },
-         {
-            "name" : "Rumsey Retro Radio",
-            "url" : "https://www.rumseyretro.ca/ewExternalFiles/rumseyretro.pls"
-         },
-         {
-            "name" : "WNAR-AM Radio",
-            "url" : "https://streaming.live365.com/a91284"
-         }
-      ]
-   },
-   {
-      "group" : "Chill",
-      "stations" : [
-         {
-            "name" : "Lounge Radio",
-            "url" : "http://www.lounge-radio.com/listen128.m3u"
-         },
-         {
-            "name" : "Beat Blender",
-            "url" : "http://somafm.com/beatblender.pls"
-         },
-         {
-            "name" : "Secret Agent",
-            "url" : "http://somafm.com/secretagent.pls"
-         },
-         {
-            "name" : "Groove Salad",
-            "url" : "http://somafm.com/groovesalad.pls"
-         },
-         {
-            "name" : "Illinois Street Lounge",
-            "url" : "http://somafm.com/illstreet.pls"
-         }
-      ]
-   },
-   {
-      "group" : "Country",
-      "stations" : [
-         {
-            "name" : "Boot Liquor",
-            "url" : "http://somafm.com/bootliquor.pls"
-         },
-         {
-            "name" : "Highway 181",
-            "url" : "http://www.181.fm/winamp.pls?station=181-highway&file=181-highway.pls"
-         },
-         {
-            "name" : "Country 108",
-            "url" : "http://www.country108.com/listen.pls"
-         },
-         {
-            "name" : "WAMU Bluegrass Country",
-            "url" : "http://ice24.securenetsystems.net/WAMU2"
-         }
-      ]
-   },
-   {
-      "group" : "Techno / Electronic",
-      "stations" : [
-         {
-            "name" : "Drone Zone",
-            "url" : "http://somafm.com/dronezone.pls"
-         },
-         {
-            "name" : "Space Station Soma",
-            "url" : "http://somafm.com/spacestation.pls"
-         },
-         {
-            "name" : "cliqhop idm",
-            "url" : "http://somafm.com/cliqhop.pls"
-         },
-         {
-            "name" : "Black Rock FM",
-            "url" : "http://somafm.com/brfm.pls"
-         },
-         {
-            "name" : "DubStep Beyond",
-            "url" : "http://somafm.com/play/dubstep32"
-         }
-      ]
-   },
-   {
-      "group" : "Community",
-      "stations" : [
-         {
-            "name" : "Jupiter Broadcasting",
-            "url" : "http://jblive.fm/"
-         }
-      ]
-   }
+	{
+		"group" : "Jazz",
+		"stations" : 
+		[
+			{
+				"name" : "Smooth Jazz",
+				"url" : "http://smoothjazz.com/streams/smoothjazz_128.pls"
+			},
+			{
+				"name" : "Sonic Universe",
+				"url" : "http://somafm.com/sonicuniverse.pls"
+			}
+		]
+	},
+	{
+		"group" : "Latin",
+		"stations" : 
+		[
+			{
+				"name" : "Top Latino Radio",
+				"url" : "http://online.radiodifusion.net:8020/listen.pls"
+			}
+		]
+	},
+	{
+		"group" : "Classic Rock",
+		"stations" : 
+		[
+			{
+				"name" : "181.FM Classic Hits",
+				"url" : "http://www.181.fm/winamp.pls?station=181-greatoldies&file=181-greatoldies.pls"
+			},
+			{
+				"name" : "Covers",
+				"url" : "http://somafm.com/covers.pls"
+			}
+		]
+	},
+	{
+		"group" : "Classical",
+		"stations" : 
+		[
+			{
+				"name" : "KDFC",
+				"url" : "http://provisioning.streamtheworld.com/pls/KDFCFM.pls"
+			},
+			{
+				"name" : "WCPE",
+				"url" : "http://www.ibiblio.org/wcpe/wcpe.pls"
+			},
+			{
+				"name" : "CINEMIX",
+				"url" : "http://cinemix.us/cine.asx"
+			},
+			{
+				"name" : "WQXR",
+				"url" : "http://www.wqxr.org/stream/wqxr/mp3.pls"
+			}
+		]
+	},
+	{
+		"group" : "Pop / Rock",
+		"stations" : 
+		[
+			{
+				"name" : "Radio Paradise",
+				"url" : "http://www.radioparadise.com/musiclinks/rp_128.m3u"
+			},
+			{
+				"name" : "SoftRockRadio.net",
+				"url" : "https://gold.streamguys1.com/softrock.mp3"
+			},
+			{
+				"name" : "Indie Pop Rocks!",
+				"url" : "http://somafm.com/indiepop.pls"
+			},
+			{
+				"name" : "PopTron",
+				"url" : "http://somafm.com/poptron.pls"
+			}
+		]
+	},
+	{
+		"group" : "Oldies",
+		"stations" : 
+		[
+			{
+				"name" : "ABN Antioch OTR",
+				"url" : "http://radio.macinmind.com/listen.m3u"
+			},
+			{
+				"name" : "AM600 Conyers OTR",
+				"url" : "http://www.conyersradio.net/listen.m3u"
+			},
+			{
+				"name" : "Rumsey Retro Radio",
+				"url" : "https://www.rumseyretro.ca/ewExternalFiles/rumseyretro.pls"
+			},
+			{
+				"name" : "WNAR-AM Radio",
+				"url" : "https://streaming.live365.com/a91284"
+			}
+		]
+	},
+	{
+		"group" : "Chill",
+		"stations" : 
+		[
+			{
+				"name" : "Lounge Radio",
+				"url" : "http://www.lounge-radio.com/listen128.m3u"
+			},
+			{
+				"name" : "Beat Blender",
+				"url" : "http://somafm.com/beatblender.pls"
+			},
+			{
+				"name" : "Secret Agent",
+				"url" : "http://somafm.com/secretagent.pls"
+			},
+			{
+				"name" : "Groove Salad",
+				"url" : "http://somafm.com/groovesalad.pls"
+			},
+			{
+				"name" : "Illinois Street Lounge",
+				"url" : "http://somafm.com/illstreet.pls"
+			}
+		]
+	},
+	{
+		"group" : "Country",
+		"stations" : 
+		[
+			{
+				"name" : "Boot Liquor",
+				"url" : "http://somafm.com/bootliquor.pls"
+			},
+			{
+				"name" : "Highway 181",
+				"url" : "http://www.181.fm/winamp.pls?station=181-highway&file=181-highway.pls"
+			},
+			{
+				"name" : "Country 108",
+				"url" : "http://www.country108.com/listen.pls"
+			},
+			{
+				"name" : "WAMU Bluegrass Country",
+				"url" : "http://ice24.securenetsystems.net/WAMU2"
+			}
+		]
+	},
+	{
+		"group" : "Techno / Electronic",
+		"stations" : 
+		[
+			{
+				"name" : "Drone Zone",
+				"url" : "http://somafm.com/dronezone.pls"
+			},
+			{
+				"name" : "Space Station Soma",
+				"url" : "http://somafm.com/spacestation.pls"
+			},
+			{
+				"name" : "cliqhop idm",
+				"url" : "http://somafm.com/cliqhop.pls"
+			},
+			{
+				"name" : "Black Rock FM",
+				"url" : "http://somafm.com/brfm.pls"
+			},
+			{
+				"name" : "DubStep Beyond",
+				"url" : "http://somafm.com/play/dubstep32"
+			}
+		]
+	},
+	{
+		"group" : "Community",
+		"stations" : 
+		[
+			{
+				"name" : "Jupiter Broadcasting",
+				"url" : "http://jblive.fm/"
+			}
+		]
+	},
+	{
+		"group" : "root",
+		"stations" : []
+	},
+	{
+		"group" : "\u516c\u5171\u9886\u57df",
+		"stations" : 
+		[
+			{
+				"name" : "\u53e4\u5178\u94a2\u7434\u4ea4\u54cd\u66f2",
+				"url" : "http://relay.publicdomainradio.org/classical.mp3"
+			},
+			{
+				"name" : "\u7235\u58eb\u6447\u6446\u4e50",
+				"url" : "http://relay.publicdomainradio.org/jazz_swing.mp3"
+			},
+			{
+				"name" : "\u6c11\u8c23",
+				"url" : "http://relay.publicdomainradio.org/swiss_schlager.mp3"
+			}
+		]
+	},
+	{
+		"group" : "\u4e2d\u56fd\u5e7f\u64ad",
+		"stations" : 
+		[
+			{
+				"name" : "CNR \u6587\u827a\u4e4b\u58f0",
+				"url" : "https://radio.0472.org/?id=648"
+			},
+			{
+				"name" : "CNR \u97f3\u4e50\u4e4b\u58f0",
+				"url" : "https://radio.0472.org/?id=641"
+			},
+			{
+				"name" : "CNR \u7ecf\u5178\u97f3\u4e50",
+				"url" : "https://radio.0472.org/?id=642"
+			},
+			{
+				"name" : "CNR \u4e2d\u56fd\u4e4b\u58f0",
+				"url" : "https://radio.0472.org/?id=639"
+			},
+			{
+				"name" : "CNR \u7ecf\u6d4e\u4e4b\u58f0",
+				"url" : "https://radio.0472.org/?id=640"
+			},
+			{
+				"name" : "CNR \u73af\u7403\u8d44\u8baf",
+				"url" : "https://radio.0472.org/?id=692"
+			}
+		]
+	}
 ]

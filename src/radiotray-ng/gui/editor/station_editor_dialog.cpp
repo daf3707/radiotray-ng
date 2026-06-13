@@ -38,7 +38,7 @@
 namespace
 {
 	const wxWindowID STATION_DIALOG_ID = 301;
-	const wxString STATION_DIALOG_TITLE = wxT("Station Editor");
+	const wxString STATION_DIALOG_TITLE = wxT("电台管理器");
 
 	const wxWindowID NAME_ID = 302;
 	const wxWindowID URL_ID = 303;
@@ -100,17 +100,17 @@ StationEditorDialog::createControls()
 	wxFlexGridSizer* grid_sizer = new wxFlexGridSizer(2, 5, 5);
 
 	// name
-	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("Name")), 0, wxALIGN_LEFT);
+	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("名称")), 0, wxALIGN_LEFT);
 	this->name_control = new wxTextCtrl(this, NAME_ID, "", wxDefaultPosition, wxSize(140, -1));
 	grid_sizer->Add(this->name_control, 0, wxALIGN_LEFT | wxEXPAND);
 
 	// url
-	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("URL")), 0, wxALIGN_LEFT);
+	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("链接")), 0, wxALIGN_LEFT);
 	this->url_control = new wxTextCtrl(this, URL_ID, "", wxDefaultPosition, wxSize(270, -1));
 	grid_sizer->Add(this->url_control, 0, wxALIGN_LEFT | wxEXPAND);
 
 	// image
-	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("Image")), 0, wxALIGN_LEFT);
+	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("图像")), 0, wxALIGN_LEFT);
 
 	wxFlexGridSizer* image_sizer = new wxFlexGridSizer(3, 5, 5);
 
@@ -126,7 +126,7 @@ StationEditorDialog::createControls()
 
 	// notify
 	grid_sizer->AddStretchSpacer();
-	this->notify_control = new wxCheckBox(this, NOTIFY_ID, wxT("Notify"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
+	this->notify_control = new wxCheckBox(this, NOTIFY_ID, wxT("通知"), wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
 	grid_sizer->Add(this->notify_control, 0, wxALIGN_RIGHT);
 
 	// finish

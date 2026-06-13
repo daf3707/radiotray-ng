@@ -38,7 +38,7 @@
 namespace
 {
 	const wxWindowID GROUP_DIALOG_ID = 401;
-	const wxString GROUP_DIALOG_TITLE = wxT("Group Editor");
+	const wxString GROUP_DIALOG_TITLE = wxT("分组管理器");
 
 	const wxWindowID NAME_ID = 402;
 	const wxWindowID BITMAP_ID = 403;
@@ -86,11 +86,11 @@ GroupEditorDialog::createControls()
 
 	wxFlexGridSizer* grid_sizer = new wxFlexGridSizer(2, 5, 5);
 
-	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("Name")), 0, wxALIGN_LEFT);
+	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("名称")), 0, wxALIGN_LEFT);
 	this->name_control = new wxTextCtrl(this, NAME_ID, "", wxDefaultPosition, wxSize(140, -1));
 	grid_sizer->Add(this->name_control, 0, wxALIGN_LEFT | wxEXPAND);
 
-	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("Image")), 0, wxALIGN_LEFT);
+	grid_sizer->Add(new wxStaticText(this, wxID_ANY, wxT("图像")), 0, wxALIGN_LEFT);
 
 	wxFlexGridSizer* image_sizer = new wxFlexGridSizer(3, 5, 5);
 

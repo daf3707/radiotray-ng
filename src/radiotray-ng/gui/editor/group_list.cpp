@@ -45,14 +45,14 @@ IMPLEMENT_DYNAMIC_CLASS(GroupList, wxListCtrl)
 
 namespace
 {
-	const wxString NAME_COLUMN_TEXT(wxT("Group"));
+	const wxString NAME_COLUMN_TEXT(wxString::FromUTF8("分组"));
 	const long NAME_COLUMN_INDEX = 0;
 	const int NAME_COLUMN_WIDTH = 160;
 
 	const int SCROLL_POSITION_DIVISOR = 3;
 
-	const wxString CONFIG_PATH(wxT("/group"));
-	const wxString CONFIG_COLUMN_1(wxT("col1"));
+	const wxString CONFIG_PATH(wxString::FromUTF8("/group"));
+	const wxString CONFIG_COLUMN_1(wxString::FromUTF8("col1"));
 
 	const std::string ROOT_NAME("root");
 }
@@ -316,7 +316,7 @@ GroupList::addGroup()
 	size_t root_index = this->editor_bookmarks->getBookmarks()->size();
 	if (this->editor_bookmarks->getBookmarks()->add_group(name, image) == false)
 	{
-		wxMessageBox(wxT("Failed to add the new group!"), wxT("Error"));
+		wxMessageBox(wxString::FromUTF8("添加新组失败!"), wxString::FromUTF8("错误"));
 		return false;
 	}
 	this->editor_bookmarks->setDirty();
@@ -324,7 +324,7 @@ GroupList::addGroup()
 	// always make sure root is at the end
 	if (this->have_root)
 	{
-		LOG(debug) << "moving new group to position " << root_index;
+		LOG(debug) << "正在将新组移动到指定位置。 " << root_index;
 		this->editor_bookmarks->getBookmarks()->move_group_to_pos(name, root_index);
 	}
 
@@ -341,7 +341,7 @@ GroupList::addGroup()
 	}
 	if (found == false)
 	{
-		wxMessageBox(wxT("An error occurred during the addition process."), wxT("Error"));
+		wxMessageBox(wxString::FromUTF8("数据添加过程中出现错误。"), wxString::FromUTF8("错误"));
 		return false;
 	}
 
@@ -503,15 +503,15 @@ GroupList::deleteGroup()
 	}
 
 	wxString tmpstr(group.group.c_str(), wxConvUTF8);
-	wxString msg("Delete \"" + tmpstr + "\"\nAre you sure?");
-	int status = wxMessageBox(wxString(msg), wxT("Confirm"), wxYES_NO);
+	wxString msg("删除 \"" + tmpstr + "\"\n你确定吗?");
+	int status = wxMessageBox(wxString(msg), wxString::FromUTF8("通知"), wxYES_NO);
 	if (status == wxYES)
 	{
 		this->station_list->clearStations();
 
 		if (this->editor_bookmarks->getBookmarks()->remove_group(group.group) == false)
 		{
-			wxMessageBox(wxT("Failed to remove the group."), wxT("Error"));
+			wxMessageBox(wxString::FromUTF8("删除组失败。"), wxString::FromUTF8("错误"));
 		}
 		else
 		{
@@ -566,7 +566,7 @@ GroupList::onBeginDrag(wxListEvent& event)
 	std::string text;
 	if (GroupDragAndDrop::buildText(group.group, item_id, text) == false)
 	{
-		wxMessageBox(wxT("Failed to build text object"), wxT("Error"));
+		wxMessageBox(wxString::FromUTF8("文本对象构建失败。"), wxString::FromUTF8("错误"));
 		event.Veto();
 		return;
 	}
@@ -816,22 +816,22 @@ GroupList::onItemRightClick(wxListEvent& event)
 
 	if (this->editor_bookmarks.get())
 	{
-		menu.Append(EditorFrame::idMenuAddGroup, wxT("&Add"));
+		menu.Append(EditorFrame::idMenuAddGroup, wxString::FromUTF8("新增 (&A)"));
 
 		long item_id = event.GetItem().GetId();
 		if (item_id != -1)
 		{
 			menu.SetTitle(this->GetItemText(item_id, NAME_COLUMN_INDEX));
 
-			menu.Append(EditorFrame::idMenuEditGroup, wxT("&Edit"));
-			menu.Append(EditorFrame::idMenuCopyGroup, wxT("&Copy"));
-			menu.Append(EditorFrame::idMenuDeleteGroup, wxT("&Delete"));
+			menu.Append(EditorFrame::idMenuEditGroup, wxString::FromUTF8("编辑 (&E)"));
+			menu.Append(EditorFrame::idMenuCopyGroup, wxString::FromUTF8("复制 (&C)"));
+			menu.Append(EditorFrame::idMenuDeleteGroup, wxString::FromUTF8("删除 (&D)"));
 		}
 
 		menu.AppendSeparator();
 	}
 
-	menu.Append(EditorFrame::idMenuAbout, wxT("About"));
+	menu.Append(EditorFrame::idMenuAbout, wxString::FromUTF8("关于"));
 
 	this->PopupMenu(&menu);
 }

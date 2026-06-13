@@ -1,3 +1,4 @@
+很喜欢这个广播软件，但是一直以来不支持i18n，做为小白也不想用AI来添加这个功能，暂时用硬编码，把界面及菜单手工汉化一下， make； sudo make install 就可以使用中文化的界面了。
 # Radiotray-NG: An Internet radio player for Linux #
 [![CircleCI](https://circleci.com/gh/ebruck/radiotray-ng/tree/master.svg?style=shield)](https://circleci.com/gh/ebruck/radiotray-ng/tree/master)
 
@@ -38,9 +39,9 @@ The version here is what I wanted out of RadioTray.
 
 ## Screenshots: ##
 
-![Screenshot](images/screenshot_1.png)
-![Screenshot](images/screenshot_7.png)
-![Screenshot](images/screenshot_2.png)
+![Screenshot](images/1.png)
+![Screenshot](images/2.png)
+![Screenshot](images/3.png)
 ![Screenshot](images/screenshot_3.png)
 ![Screenshot](images/screenshot_4.png)
 ![Screenshot](images/screenshot_6.png)

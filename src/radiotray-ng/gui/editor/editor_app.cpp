@@ -45,7 +45,7 @@ void
 EditorApp::OnInitCmdLine(wxCmdLineParser& parser)
 {
 	wxApp::OnInitCmdLine(parser);
-	parser.AddParam(_("Bookmark file to load"), wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL);
+	parser.AddParam(_("加载书签"), wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL);
 }
 
 bool
@@ -68,7 +68,7 @@ EditorApp::OnInit()
 	this->instance_checker = std::make_unique<wxSingleInstanceChecker>(APPLICATION_PID_NAME, radiotray_ng::get_runtime_dir());
 	if (this->instance_checker->IsAnotherRunning())
 	{
-		wxLogError(_("Another instance is already running, aborting."));
+		wxLogError(_("另一个实例正在运行，因此中止运行。"));
 		return false;
 	}
 

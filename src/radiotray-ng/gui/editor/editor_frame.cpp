@@ -150,33 +150,33 @@ EditorFrame::createMenus()
 	wxMenuBar* mbar = new wxMenuBar();
 
 	wxMenu* fileMenu = new wxMenu(_T(""));
-	fileMenu->Append(idMenuNew, _("&New"), _("Create a new Bookmarks File"));
-	fileMenu->Append(idMenuOpen, _("&Open\tCtrl-O"), _("Open a Bookmarks File"));
-	fileMenu->Append(idMenuSave, _("&Save\tCtrl-S"), _("Save the Bookmarks File"));
-	fileMenu->Append(idMenuSaveAs, _("&Save As"), _("Save the Bookmarks to a new file"));
+	fileMenu->Append(idMenuNew, wxString::FromUTF8("新建 (&N)"), wxString::FromUTF8("建立新的书签文件"));
+	fileMenu->Append(idMenuOpen, wxString::FromUTF8("打开 (&O)\tCtrl-O"), wxString::FromUTF8("打开书签文件"));
+	fileMenu->Append(idMenuSave, wxString::FromUTF8("保存 (&S)\tCtrl-S"), wxString::FromUTF8("保存书签文件"));
+	fileMenu->Append(idMenuSaveAs, wxString::FromUTF8("另存为..."), wxString::FromUTF8("保存书签为新文件"));
 	fileMenu->AppendSeparator();
-	fileMenu->Append(idMenuQuit, _("&Quit\tCtrl-Q"), _("Quit the application"));
-	mbar->Append(fileMenu, _("&File"));
+	fileMenu->Append(idMenuQuit, wxString::FromUTF8("退出 (&Q)\tCtrl-Q"), wxString::FromUTF8("退出软件"));
+	mbar->Append(fileMenu, wxString::FromUTF8("文件 (&F)"));
 
 	wxMenu* groupMenu = new wxMenu(_T(""));
-	groupMenu->Append(idMenuAddGroup, _("&Add"));
-	groupMenu->Append(idMenuEditGroup, _("&Edit"));
-	groupMenu->Append(idMenuCopyGroup, _("&Copy"));
-	groupMenu->Append(idMenuDeleteGroup, _("&Delete"));
-	mbar->Append(groupMenu, _("&Group"));
+	groupMenu->Append(idMenuAddGroup, wxString::FromUTF8("新增 (&A)"));
+	groupMenu->Append(idMenuEditGroup, wxString::FromUTF8("编辑 (&E)"));
+	groupMenu->Append(idMenuCopyGroup, wxString::FromUTF8("复制 (&C)"));
+	groupMenu->Append(idMenuDeleteGroup, wxString::FromUTF8("删除 (&D)"));
+	mbar->Append(groupMenu, wxString::FromUTF8("分组 (&G)"));
 
 	wxMenu* stationMenu = new wxMenu(_T(""));
-	stationMenu->Append(idMenuAddStation, _("&Add\tCtrl-A"));
-	stationMenu->Append(idMenuEditStation, _("&Edit\tCtrl-E"));
-	stationMenu->Append(idMenuCopyStation, _("&Copy\tCtrl-C"));
-	stationMenu->Append(idMenuCutStation, _("Cu&t\tCtrl-X"));
-	stationMenu->Append(idMenuPasteStation, _("&Paste\tCtrl-V"));
-	stationMenu->Append(idMenuDeleteStation, _("&Delete\tCtrl-D"));
-	mbar->Append(stationMenu, _("&Station"));
+	stationMenu->Append(idMenuAddStation, wxString::FromUTF8("新增 (&A)\tCtrl-A"));
+	stationMenu->Append(idMenuEditStation, wxString::FromUTF8("编辑 (&E)\tCtrl-E"));
+	stationMenu->Append(idMenuCopyStation, wxString::FromUTF8("复制 (&C)\tCtrl-C"));
+	stationMenu->Append(idMenuCutStation, wxString::FromUTF8("剪切 (&T)\tCtrl-X"));
+	stationMenu->Append(idMenuPasteStation, wxString::FromUTF8("粘贴 (&P)\tCtrl-V"));
+	stationMenu->Append(idMenuDeleteStation, wxString::FromUTF8("删除 (&D)\tCtrl-D"));
+	mbar->Append(stationMenu, wxString::FromUTF8("电台 (&S)"));
 
 	wxMenu* helpMenu = new wxMenu(_T(""));
-	helpMenu->Append(idMenuAbout, _("&About\tF1"), _("Show info about this application"));
-	mbar->Append(helpMenu, _("&Help"));
+	helpMenu->Append(idMenuAbout, wxString::FromUTF8("关于 (&A)\tF1"), wxString::FromUTF8("关于这个软件"));
+	mbar->Append(helpMenu, wxString::FromUTF8("帮助 (&H)"));
 
 	this->SetMenuBar(mbar);
 
@@ -328,10 +328,10 @@ void
 EditorFrame::onOpen(wxCommandEvent& /* event */)
 {
 	wxFileDialog dialog(this,
-						("Open bookmarks file"),
+						("打开书签文件"),
 						"",
 						"",
-						"Bookmark files (*.json)|*.json",
+						"书签文件 (*.json)|*.json",
 						wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dialog.ShowModal() != wxID_OK)
 	{
@@ -360,17 +360,17 @@ EditorFrame::onSaveAs(wxCommandEvent& /* event */)
 	if (this->editor_bookmarks.get() == nullptr)
 	{
 		// should never reach here
-		wxMessageBox(wxT("No open bookmarks detected!"), wxT("Error"));
+		wxMessageBox(wxT("未检测到打开的书签"), wxT("错误"));
 		this->GetMenuBar()->Enable(idMenuSave, false);
 		this->GetMenuBar()->Enable(idMenuSaveAs, false);
 		return;
 	}
 
 	wxFileDialog dialog(this,
-						wxT("Save bookmarks file"),
+						wxT("保存书签文件"),
 						"",
 						"",
-						"Bookmark files (*.json)|*.json",
+						"书签文件 (*.json)|*.json",
 						wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
     if (dialog.ShowModal() != wxID_OK)
 	{
@@ -403,7 +403,7 @@ EditorFrame::onClose(wxCloseEvent& event)
 			}
 			else
 			{
-				wxMessageBox(wxT("Unable to veto, application will exit!"), wxT("Warning"));
+				wxMessageBox(wxT("发生致命冲突，程序必须退出！"), wxT("警告"));
 			}
 		}
 	}
@@ -512,8 +512,8 @@ EditorFrame::onAbout(wxCommandEvent& /* event */)
     aboutInfo.SetName(APPLICATION_NAME);
 	aboutInfo.SetDescription(version);
 
-	std::string license = "Copyright (C) 2017-2021  Michael A. Burns\n\nThis program comes with absolutely no warranty.\n"
-		"See the GNU General Public License, version 3 or later for details.";
+	std::string license = "版权所有 (C) 2017-2021  Michael A. Burns\n\n本程序不提供任何担保。\n"
+		"详情请参阅 GNU 通用公共许可证第 3 版或更高版本。";
 
 	aboutInfo.SetCopyright(license);
     aboutInfo.SetWebSite(APP_WEBSITE);
@@ -558,8 +558,8 @@ EditorFrame::loadBookmarks(const std::string& filename)
 	this->editor_bookmarks = std::make_shared<EditorBookmarks>(filename);
 	if (this->group_list->loadBookmarks(this->editor_bookmarks) == false)
 	{
-		wxString msg("A failure occurred loading the bookmarks.");
-		wxMessageBox(msg, _("Error"));
+		wxString msg("加载书签时失败。");
+		wxMessageBox(msg, wxString::FromUTF8("错误"));
 
 		this->editor_bookmarks.reset();
 		return;
@@ -583,7 +583,7 @@ EditorFrame::saveBookmarks(bool ask_to_save, const std::string& file_to_save)
 	if (this->editor_bookmarks.get() == nullptr)
 	{
 		// should never reach here
-		wxMessageBox(wxT("No open bookmarks detected!"), wxT("Error"));
+		wxMessageBox(wxT("未检测到任何打开的书签！"), wxT("错误"));
 		this->GetMenuBar()->Enable(idMenuSave, false);
 		this->GetMenuBar()->Enable(idMenuSaveAs, false);
 		return wxCANCEL;
@@ -598,7 +598,7 @@ EditorFrame::saveBookmarks(bool ask_to_save, const std::string& file_to_save)
 
 	if (ask_to_save)
 	{
-		int status = wxMessageBox(wxT("Save the Bookmarks?"), wxT("Confirm"), wxYES_NO | wxCANCEL, this);
+		int status = wxMessageBox(wxT("保存书签吗?"), wxT("通知"), wxYES_NO | wxCANCEL, this);
 		if (status != wxYES)
 		{
 			return status;
@@ -607,7 +607,7 @@ EditorFrame::saveBookmarks(bool ask_to_save, const std::string& file_to_save)
 
 	if (!this->editor_bookmarks->getBookmarks()->save_as(file_to_save))
 	{
-		wxMessageBox("Failed to save the bookmarks!", _("Error"));
+		wxMessageBox("书签保存失败!", wxString::FromUTF8("错误"));
 		return wxCANCEL;
 	}
 

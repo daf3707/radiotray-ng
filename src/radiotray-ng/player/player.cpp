@@ -43,7 +43,7 @@ bool Player::play_next()
 
 	if (!this->current_playlist.empty())
 	{
-		LOG(debug) << "uri: " << this->current_playlist.front();
+		LOG(debug) << "链接: " << this->current_playlist.front();
 
 		g_object_set(this->pipeline, "uri", this->current_playlist.front().c_str(), NULL);
 
@@ -61,21 +61,21 @@ bool Player::play_next()
 		{
 			const auto volume = this->config->get_uint32(VOLUME_LEVEL_KEY, DEFAULT_VOLUME_LEVEL_VALUE);
 
-			LOG(debug) << "setting startup volume: " << volume;
+			LOG(debug) << "正在设置启动音量： " << volume;
 
 			this->volume(volume);
 		}
 
 		if (gst_element_set_state(this->pipeline, GST_STATE_PAUSED) == GST_STATE_CHANGE_FAILURE)
 		{
-			LOG(error) << "Failed to set pipeline to: GST_STATE_PAUSED";
+			LOG(error) << "无法将流水线设置为: GST_STATE_PAUSED";
 			return false;
 		}
 
 		return true;
 	}
 
-	LOG(info) << "playlist is empty";
+	LOG(info) << "播放列表为空";
 
 	return false;
 }
@@ -85,13 +85,13 @@ bool Player::play(const playlist_t& playlist)
 {
 	if (this->gst_bus == nullptr)
 	{
-		LOG(error) << "gstreamer not ready";
+		LOG(error) << "gstreamer 没有就绪";
 		return false;
 	}
 
 	if (playlist.empty())
 	{
-		LOG(error) << "playlist is empty";
+		LOG(error) << "播放列表为空";
 		return false;
 	}
 
@@ -100,7 +100,7 @@ bool Player::play(const playlist_t& playlist)
 	if (!this->play_next())
 	{
 		this->event_bus->publish_only(IEventBus::event::station_error, ERROR_KEY,
-			"Unable to set the pipeline to the playing state!");
+			"无法将流水线设置为播放状态！");
 
 		return false;
 	}
@@ -248,7 +248,7 @@ gboolean Player::handle_messages_cb(GstBus* /*bus*/, GstMessage* message, gpoint
 			{
 				if (!player->play_next())
 				{
-					LOG(debug) << "setting state to: " << STATE_STOPPED;
+					LOG(debug) << "设置状态为: " << STATE_STOPPED;
 
 					player->event_bus->publish_only(IEventBus::event::state_changed, STATE_KEY, STATE_STOPPED);
 					player->event_bus->publish_only(IEventBus::event::station_error, ERROR_KEY, err->message);
@@ -282,7 +282,7 @@ gboolean Player::handle_messages_cb(GstBus* /*bus*/, GstMessage* message, gpoint
 			if (percent == 100)
 			{
 				player->buffering = false;
-				LOG(debug) << "stopped buffering, setting state to: GST_STATE_PLAYING";
+				LOG(debug) << "已停止缓冲，正在将状态设置为: GST_STATE_PLAYING";
 				gst_element_set_state(GST_ELEMENT(player->pipeline), GST_STATE_PLAYING);
 			}
 			else

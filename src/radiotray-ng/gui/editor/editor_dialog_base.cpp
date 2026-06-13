@@ -78,7 +78,7 @@ EditorDialogBase::addImageButton(wxSizer* image_sizer)
 		return false;
 	}
 
-	this->image_button = new wxButton(this, IMAGE_BUTTON_ID, "Browse ...");
+	this->image_button = new wxButton(this, IMAGE_BUTTON_ID, "浏览 ...");
 	image_sizer->Add(this->image_button, 0, wxALIGN_RIGHT);
 
 	return true;
@@ -118,10 +118,10 @@ EditorDialogBase::onBrowseButton(wxCommandEvent& /* event */)
 		file = filename.GetFullName();
 	}
 	wxFileDialog dialog(this,
-						("Select station image"),
+						("选择电台图像"),
 						path,
 						file,
-						"Image files (*.bmp;*.ico;*.xpm;*.png;*.jpg)|*.bmp;*.ico;*.xpm;*.png;*.jpg",
+						"图像文件 (*.bmp;*.ico;*.xpm;*.png;*.jpg)|*.bmp;*.ico;*.xpm;*.png;*.jpg",
 						wxFD_OPEN | wxFD_FILE_MUST_EXIST);
     if (dialog.ShowModal() != wxID_OK)
 	{
